@@ -4,13 +4,14 @@ mod vga_buffer;
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn panic(_info:&PanicInfo)->!{
+fn panic(info:&PanicInfo)-> ! {
+	println!("{}",info);
 	loop{}
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> !{
-	vga_buffer::printf_something();
+	println!("Hello World{}","This is Zhang's operating system!");
 	loop{}
 }
 
